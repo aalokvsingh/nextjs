@@ -4,7 +4,7 @@ Next.js uses **file-system based routing**, meaning you can use folders and file
 
 ---
 
-## 🚀 ## Creating a page
+## 🚀 Creating a page
 
 A **page** is UI that is rendered on a specific route. To create a page, add a page.tsx inside the `app` or `sub` directory in app and default export a React component. For example, to create an index page (`/`):
 
