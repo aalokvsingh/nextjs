@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Project Setup Guide
 
-## Getting Started
+This guide outlines the steps taken to set up a new Next.js application and organize common project folders for UI components and reusable utilities.
 
-First, run the development server:
+---
+
+## 🚀 Creating a New Next.js Project
+
+To create a new Next.js application, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+npx create-next-app@latest nextjs
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The create-next-app command bootstraps a new Next.js project with all required configurations.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+After installation, navigate into the project:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+cd nextjs
 
-## Learn More
+📁 Project Structure
+Inside the project, navigate to:
+src/app
+Create two folders:
+mkdir -p lib ui
+After setting up the folders, your project structure will look like this:
+├── public
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── src
+│   └── app
+│       ├── favicon.ico
+│       ├── globals.css
+│       ├── layout.tsx
+│       ├── lib
+│       ├── page.tsx
+│       └── ui
 
-To learn more about Next.js, take a look at the following resources:
+🧱 Folder Explanation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path             | Purpose                                                                                            |
+| ---------------- | -------------------------------------------------------------------------------------------------- |
+| **/src/app**     | Main application folder — where pages, routes, and layout logic reside.                            |
+| **/src/app/lib** | Contains reusable utility functions and data-fetching logic. Helps keep code maintainable.         |
+| **/src/app/ui**  | Contains UI components such as buttons, forms, tables, cards, etc. Promotes component reusability. |
+| **/public**      | Contains static assets (images, icons, logos), served directly at the root URL.                    |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+✅ Summary
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+We created a fresh Next.js project using create-next-app.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+We organized your project into semantic folders for UI components and shared utilities.
+
+This structure is clean, scalable, and recommended for professional Next.js applications.
+
+🎯 Next Steps
+
+Start building UI components inside src/app/ui
+
+Place helper modules inside src/app/lib
+
+Add new routes by creating folders inside src/app
+
+Use the App Router structure to expand pages and layouts
+
