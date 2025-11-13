@@ -1,7 +1,15 @@
+
+import Aside from "./ui/aside";
+import Section from "./ui/section";
+
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+    <>
+    <Aside>Aside Bar</Aside>
+    <Section>Section Area</Section>
+    {/* <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       Next js Home Page
-    </div>
+    </div> */}
+    </>
   );
 }

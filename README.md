@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Next.js App Router – Dynamic Routing Explained
 
-## Getting Started
+Dynamic routing in **Next.js App Router** is both powerful and expressive.  
+This guide covers **four core routing patterns** with TypeScript examples — helping you understand how to handle URL parameters effectively in modern Next.js apps.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 1️⃣ Dynamic Route Segment
+
+**Use:** Captures a single path segment as a parameter.
+
+**Example**
+
+```tsx
+// app/vendor/[id]/page.tsx
+
+const VendorPage = async (props: { params: { id: string } }) => {
+  const { id } = await props.params;
+
+  return (
+    <div>
+      <h1>Vendor ID: {id}</h1>
+      <p>This is the page for vendor with ID: {id}.</p>
+    </div>
+  );
+};
+
+export default VendorPage;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 2️⃣ Nested Dynamic Route Segment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Use:** Combine multiple dynamic folders for deeper routes; each segment’s params are available in that file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Example**
 
-## Learn More
+```tsx
+const ServicePage = async (props: {params:{service:string, id:string}}) =>{
+    const {service, id} = await props.params;
+    return(
+        <div>
+            <h1>Service: {service} for Vendor ID: {id}</h1>
+            <p>This is the page for service {service} of vendor with ID: {id}.</p>
+        </div>
+    );
+}
 
-To learn more about Next.js, take a look at the following resources:
+export default ServicePage;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+//url: http://localhost:3000/vendor/alok%20singh/network
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+## 3️⃣ Catch-All Route Segment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Use:** Capture one or more segments as an array.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Example**
+
+```tsx
+const ServicePage = async (props: {params:{slug:string[]}}) =>{
+    const {slug} = await props.params;
+    return(
+        <div>
+            <h1>Services Page</h1>
+                <p>Requested Services: {slug.join(", ")}</p>
+                <pre>{JSON.stringify(slug, null, 2)}</pre>
+        </div>
+    );
+}
+
+export default ServicePage;
+
+// http://localhost:3000/services/netowk/security
+
+```
+
+## 4️⃣ Optional Catch-All Route Segment
+
+**Use:** Capture zero or more segments — param may be undefined.
+
+**Example**
+
+```tsx
+const ServicePage = async (props: {params:{slug?:string[]}}) =>{
+    const {slug} = await props.params;
+    return(
+        <div>
+            <h1>Services Page</h1>
+            {slug ? (
+                <>
+                <p>Requested Services: {slug.join(", ")}</p>
+                <pre>{JSON.stringify(slug, null, 2)}</pre>
+                </>
+            ) : (
+                <p>No specific service requested.</p>
+            )}
+        </div>
+    );
+}
+
+export default ServicePage;
+
+// Url: http://localhost:3000/services
+// Url: http://localhost:3000/services/network/security
+```
+---
+#Nextjs #React #WebDevelopment #TypeScript #Frontend #JavaScript #Learning #Routing
+
+```
