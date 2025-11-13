@@ -1,8 +1,11 @@
-interface PageProps {
-  params: {
-    slug: string
-  }
-}
+// interface PageProps {
+//   params: {
+//     slug: string
+//   }
+// }
+
+type PageProps = { params: { slug: string } }
+
 export default function BlogPostPage({ params }: PageProps) {
     return (
         <div>
